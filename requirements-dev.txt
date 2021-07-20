@@ -1,0 +1,8 @@
+# Local package
+-e .
+
+# External requirements
+humanfriendly
+jupyter
+python-dotenv
+spotipy
