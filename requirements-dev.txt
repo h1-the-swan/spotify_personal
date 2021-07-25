@@ -2,7 +2,10 @@
 -e .
 
 # External requirements
+black
 humanfriendly
 jupyter
+pandas
+pylint
 python-dotenv
 spotipy
