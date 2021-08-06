@@ -55,18 +55,25 @@ class SpotifyPersonal:
     def get_tracks_df(self, items: List) -> pd.DataFrame:
         d = []
         for item in items:
-            t = item["track"]
+            try:
+                t = item["track"]
+            except KeyError:
+                t = item
             d.append(
                 {
-                    "added_at": item["added_at"],
+                    "added_at": item.get("added_at"),
                     "uri": t["uri"],
                     "name": t["name"],
                     "popularity": t["popularity"],
                     "duration_ms": t["duration_ms"],
                     "artist_1_name": t["artists"][0]["name"],
+                    "album_release_date": t["album"]["release_date"],
                 }
             )
         df_tracks = pd.DataFrame(d)
+        df_tracks["album_release_date"] = pd.to_datetime(
+            df_tracks["album_release_date"]
+        )
         d = []
         offset = 0
         step = 100
