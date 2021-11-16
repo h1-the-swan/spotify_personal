@@ -1,0 +1,15 @@
+version: '3'
+services:
+    spotify_personal:
+        build: .
+        volumes:
+            - ./spotify_personal:/usr/local/src/spotify_personal
+            - ./notebooks:/usr/local/src/notebooks
+        environment:
+            # This ensures that errors are printed as they occur, which
+            # makes debugging easier.
+            - PYTHONUNBUFFERED=1
+            - LOG_LEVEL=DEBUG
+            - DEV_MODE=1
+        ports:
+            - 127.0.0.1:8870:8870

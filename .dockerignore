@@ -1,0 +1,10 @@
+# Python cache files
+**.pyc
+**/__pycache__
+*.egg-info
+.dockerignore
+
+venv
+
+# Docker artifacts
+Dockerfile
